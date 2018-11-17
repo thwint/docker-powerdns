@@ -1,5 +1,5 @@
 #!/bin/sh
-set -x
+
 # translate all environment variables to values usable in configuration file
 env | while IFS='=' read -r envvar_key envvar_value
 do
