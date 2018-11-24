@@ -1,3 +1,5 @@
+[![Docker Repository on Quay](https://quay.io/repository/thwint/powerdns/status "Docker Repository on Quay")](https://quay.io/repository/thwint/powerdns)
+![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)
 # PowerDNS Docker image
 A docker container shipping PowerDNS nameserver
 
@@ -10,7 +12,8 @@ A docker container shipping PowerDNS nameserver
 ## Usage
 
 ### docker-compose
-
+PowerDNS server with webserver and API enabled.
+```
 version: '2.1'
 services:
   pdns:
@@ -23,9 +26,18 @@ services:
       PDNS_GMYSQL_PORT: 3306
       PDNS_GMYSQL_DBNAME: pdns
       PDNS_GMYSQL_USER: pdns
+      PDNS_GMYSQL_PASSWORD: pdnspassword
+      PDNS_WEBSERVER: "yes"
+      PDNS_WEBSERVER_ADDRESS: 0.0.0.0
+      PDNS_WEBSERVER_PORT: 8081
+      PDNS_WEBSERVER_PASSWORD: webpassword
+      PDNS_WEBSERVER_ALLOW_FROM: "172.19.0.0/16"
+      PDNS_API: "yes"
+      PDNS_API_KEY: mysecretapikey
+      PDNS_ALLOW_AXFR_IPS: "123.45.6.7,123.54.7.6"
+      PDNS_LOCAL_ADDRESS: 0.0.0.0
     ports:
-      - "54:53"
-      - "8081:8081"
+      - "53:53"
     depends_on:
       - "pdns.db"
     networks:
@@ -42,6 +54,7 @@ services:
       MYSQL_PASSWORD: pdnspassword
     networks:
       - default
+```
 
 
 ## Configuration

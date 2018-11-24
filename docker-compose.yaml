@@ -11,8 +11,7 @@ services:
       PDNS_GMYSQL_DBNAME: pdns
       PDNS_GMYSQL_USER: pdns
     ports:
-      - "54:53"
-      - "8081:8081"
+      - "53:53"
     depends_on:
       - "pdns.db"
     networks:
