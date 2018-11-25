@@ -6,7 +6,7 @@ COPY *.sh /
 COPY pdns.conf /etc/pdns/
 COPY sql/ /etc/pdns/sql
 
-RUN apk add --no-cache pdns pdns-backend-mysql pdns-backend-sqlite3 pdns-backend-pgsql pdns-backend-mariadb && \
+RUN apk add --no-cache pdns pdns-backend-mysql pdns-backend-sqlite3 pdns-backend-pgsql pdns-backend-mariadb mysql-client && \
     rm -rf /var/cache/apk/*
 
 EXPOSE 53/tcp 53/udp 8081

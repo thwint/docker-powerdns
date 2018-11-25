@@ -18,7 +18,7 @@ version: '2.1'
 services:
   pdns:
     image: pdns
-    container_name: pdns
+    container_name: quay.io/thwint/powerdns
     hostname: pdns
     environment:
       PDNS_LAUNCH: gmysql

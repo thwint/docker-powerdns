@@ -27,7 +27,6 @@ function waitAndInitMySql {
         echo Database is empty. Initializing database ...
         ${DB_CMD} -r -N -w ${PDNS_GMYSQL_DBNAME} < ${DB_INIT_SCHEMA}
     fi
-
 }
 
 function waitAndInitPSql() {
