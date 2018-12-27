@@ -7,7 +7,7 @@ do
     REALKEY=$(expr ${envvar_key} : 'PDNS_\([A-Za-z_=]\+\)')
     if [[ ! -z $(expr ${envvar_key} : 'PDNS_\([A-Za-z_=]\+\)') ]]; then
         if [[ ! -z $envvar_value ]]; then
-          echo "${REALKEY}=${envvar_value}" | tr '[:upper:]_' '[:lower:]-' >> /etc/pdns/pdns.conf
+          echo $(echo "${REALKEY}=" | tr '[:upper:]_' '[:lower:]-')${envvar_value} >> /etc/pdns/pdns.conf
         fi
     fi
 done
